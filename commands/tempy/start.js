@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 module.exports = {
-    name: 'end',
+    name: 'start',
     description: 'This command is for starting a new game',
     async execute(client, message, args, players) {
         
@@ -67,7 +67,7 @@ module.exports = {
                     const msgEmbed = new MessageEmbed()
                         .setColor('#ffff00')
                         .setTitle(`You already have a running game!`)
-                        .setDescription(`To stop your running game please type .stop`)
+                        .setDescription(`To stop your running game please type +end`)
                     return message.reply({ embeds: [msgEmbed] })
                         .catch(console.error);
                 }

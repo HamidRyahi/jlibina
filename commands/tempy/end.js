@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 module.exports = {
-    name: 'stop',
+    name: 'end',
     description: 'This command is for canceling an old game',
     async execute(client, message, args, players) {
         let isFound = false
