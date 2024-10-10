@@ -1,6 +1,6 @@
 const players = []
 module.exports = async (client, Discord, message) => {
-    let prefix = '.';
+    let prefix = '+';
     if (!message.content.startsWith(prefix) || message.author.bot) return;
     if (message.channel.id !== "1294017400911691876") return;
     //
