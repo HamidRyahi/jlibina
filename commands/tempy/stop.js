@@ -11,7 +11,7 @@ module.exports = {
                 console.log('players array: ', players)
                 const msgEmbed = new MessageEmbed()
                     .setColor('#ffff00')
-                    .setTitle(`You have canceled your game!`)
+                    .setTitle(`You have stopped your game!`)
                     .setDescription(`To start a new game please type .start`)
                 return message.reply({ embeds: [msgEmbed] })
                     .catch(console.error);
