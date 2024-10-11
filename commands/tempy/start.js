@@ -50,7 +50,7 @@ module.exports = {
                 .setColor('#00ff00')
                 .setTitle(`Your game started!`)
                 .setDescription(`Try to guess the correct number`)
-                .setFooter(`Player: ${message.author.username}#${message.author.discriminator}`)
+                .setFooter(`Player: ${message.author.username}`)
                 .setThumbnail(`https://cdn.discordapp.com/avatars/${message.author.id}/${message.author.avatar}.png`)
             message.reply({ embeds: [msgEmbed] })
                 .catch(console.error);
@@ -81,7 +81,7 @@ module.exports = {
                 .setColor('#00ff00')
                 .setTitle(`Your game started!`)
                 .setDescription(`Try to guess the correct number`)
-                .setFooter(`Player: ${message.author.username}#${message.author.discriminator}`)
+                .setFooter(`Player: ${message.author.username}`)
                 .setThumbnail(`https://cdn.discordapp.com/avatars/${message.author.id}/${message.author.avatar}.png`)
             message.reply({ embeds: [msgEmbed] })
                 .catch(console.error);
@@ -91,7 +91,7 @@ module.exports = {
 
         const filter = m => m.content.replace(/[^\d]/g, "").length === theNumber.length && m.author.id === message.author.id
         const collector = message.channel.createMessageCollector({ filter, time: 480000 });
-        collector.on('collect', m => {
+        collector.on('collect', async m => {
             let response = []
             let found = false
             for (let i = 0; i < players.length; i++) {
@@ -113,6 +113,7 @@ module.exports = {
                 }
             }
             if (!response.includes('🟠') && !response.includes('🔴')) {
+                await m.react("✅");
                 collector.stop()
                 for (let i = 0; i < players.length; i++) {
                     if (players[i].id === message.author.id) {
@@ -123,7 +124,7 @@ module.exports = {
             const msgEmbed = new MessageEmbed()
                 .setColor('#00ff00')
                 .setDescription(`${response.join(' ')}`)
-                .setFooter(`Player: ${message.author.username}#${message.author.discriminator}`)
+                .setFooter(`Player: ${message.author.username}`)
             m.reply({ embeds: [msgEmbed] })
                 .catch(console.error);
         });
